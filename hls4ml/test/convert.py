@@ -38,4 +38,7 @@ hls_model = hls4ml.converters.convert_from_keras_model(
     backend="Vivado"
 )
 
+# Write the HLS project to disk (required for hls4ml >= 1.0)
+hls_model.write()
+
 print("HLS project generated successfully.")

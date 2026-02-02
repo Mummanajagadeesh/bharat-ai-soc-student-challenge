@@ -1,0 +1,18 @@
+# Working package versions for HLS4ML with Keras 3
+# Tested and verified on 2024-02-02
+
+# Deep Learning Framework
+tensorflow==2.20.0  # or tensorflow-cpu==2.20.0 for CPU-only
+keras==3.13.2
+
+# HLS4ML
+hls4ml==1.2.0
+
+# Dependencies
+numpy==2.4.2
+h5py==3.15.1
+
+# Additional recommended packages
+# pyyaml>=6.0  # For config file parsing
+# matplotlib  # For plotting (optional)
+# pytest  # For testing (optional)
