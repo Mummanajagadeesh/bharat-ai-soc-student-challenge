@@ -3,13 +3,13 @@
 
 # Deep Learning Framework
 tensorflow==2.20.0  # or tensorflow-cpu==2.20.0 for CPU-only
-keras==3.13.2
+keras==3.12.1
 
 # HLS4ML
 hls4ml==1.2.0
 
 # Dependencies
-numpy==2.4.2
+numpy==2.2.6
 h5py==3.15.1
 
 # Additional recommended packages
