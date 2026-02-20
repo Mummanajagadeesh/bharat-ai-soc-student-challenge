@@ -2,6 +2,15 @@
 
 ## Real-Time Object Detection Using Hardware-Accelerated CNN on Xilinx Zynq FPGA with Arm Processor
 
+### SUBMISSION VIDEO : 
+
+<p align="center">
+  <a href="https://youtu.be/FXMh82mkGck">
+    <img src="https://img.youtube.com/vi/FXMh82mkGck/0.jpg" alt="Demo Video">
+  </a>
+</p>
+
+
 ## Objective
 Design and implement a hardware-accelerated CNN inference system on a Xilinx Zynq SoC, leveraging FPGA fabric to achieve real-time object detection or image classification, and quantitatively demonstrate performance improvements over a CPU-only implementation.
 
