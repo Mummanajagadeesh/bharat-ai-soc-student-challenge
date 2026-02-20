@@ -1,0 +1,33 @@
+
+9. Printing statistics.
+
+=== conv2d_mem ===
+
+   Number of wires:                181
+   Number of wire bits:           2514
+   Number of public wires:          39
+   Number of public wire bits:     422
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                165
+     $add                           16
+     $adff                           5
+     $adffe                         14
+     $dffe                           5
+     $eq                            12
+     $ge                             3
+     $logic_not                      2
+     $logic_or                       3
+     $lt                             9
+     $mul                            6
+     $mux                           41
+     $ne                            13
+     $neg                            2
+     $not                            3
+     $pmux                          11
+     $reduce_and                    12
+     $reduce_bool                    5
+     $reduce_or                      1
+     $sub                            2
+

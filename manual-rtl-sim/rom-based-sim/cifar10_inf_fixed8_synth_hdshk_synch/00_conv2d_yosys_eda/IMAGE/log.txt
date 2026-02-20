@@ -1,0 +1,65 @@
+"==== VIEW A: after frontend (before lowering) ===="
+
+3. Printing statistics.
+
+=== image_b_rom ===
+
+   Number of wires:                 17
+   Number of wire bits:             65
+   Number of public wires:           9
+   Number of public wire bits:      34
+   Number of memories:               1
+   Number of memory bits:         8192
+   Number of processes:              2
+   Number of cells:                  5
+     $logic_and                      2
+     $logic_not                      1
+     $meminit_v2                     1
+     $memrd                          1
+
+"==== VIEW B: after memory -nomap (abstract memories kept) ===="
+
+8. Printing statistics.
+
+=== image_b_rom ===
+
+   Number of wires:                 22
+   Number of wire bits:             86
+   Number of public wires:           9
+   Number of public wire bits:      34
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 17
+     $dff                            4
+     $logic_and                      2
+     $logic_not                      1
+     $mem_v2                         1
+     $mux                            9
+
+"==== VIEW C: after synth_xilinx (tech-mapped) ===="
+
+10. Printing statistics.
+
+=== image_b_rom ===
+
+   Number of wires:                243
+   Number of wire bits:            504
+   Number of public wires:           9
+   Number of public wire bits:      34
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                360
+     BUFG                            1
+     FDRE                           28
+     IBUF                           14
+     LUT2                            5
+     LUT3                            7
+     LUT4                            6
+     LUT5                           23
+     LUT6                          160
+     MUXF7                          86
+     MUXF8                          20
+     OBUF                           10
+

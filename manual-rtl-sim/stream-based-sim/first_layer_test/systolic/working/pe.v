@@ -1,0 +1,19 @@
+module pe
+#(
+    parameter DATA_W = 8,
+    parameter ACC_W  = 24
+)
+(
+    input                   clk,
+    input                   rst,
+    input  [DATA_W-1:0]     a,
+    input  [DATA_W-1:0]     w,
+    output reg [ACC_W-1:0]  y
+);
+    always @(posedge clk) begin
+        if (rst)
+            y <= 0;
+        else
+            y <= a * w;
+    end
+endmodule

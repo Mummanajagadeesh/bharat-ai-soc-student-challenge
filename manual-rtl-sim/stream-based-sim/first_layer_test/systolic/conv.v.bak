@@ -1,0 +1,183 @@
+module conv_3x3
+#(
+    parameter DATA_W = 8,
+    parameter ACC_W  = 24,
+    parameter IMG_W  = 5,
+    parameter IMG_H  = 5
+)
+(
+    input clk,
+    input rst,
+
+    // pixel stream
+    input                   in_valid,
+    input  [DATA_W-1:0]     in_pixel,
+
+    // weight loading (from TB)
+    input                   w_load,
+    input  [3:0]            w_addr,     // 0..8
+    input  [DATA_W-1:0]     w_data,
+
+    // output
+    output reg              out_valid,
+    output reg [ACC_W-1:0]  out_pixel
+);
+
+    // ---------------------------
+    // Kernel storage (3x3)
+    // ---------------------------
+    reg [DATA_W-1:0] kernel[0:2][0:2];
+    integer kr,kc;
+    always @(posedge clk) begin
+        if (rst) begin
+            for (kr=0; kr<3; kr=kr+1)
+                for (kc=0; kc<3; kc=kc+1)
+                    kernel[kr][kc] <= 0;
+        end
+        else if (w_load) begin
+            kernel[w_addr/3][w_addr%3] <= w_data;
+        end
+    end
+
+    // ---------------------------
+    // Line buffers (IMG_W wide)
+    // ---------------------------
+    reg [DATA_W-1:0] line0[0:IMG_W-1];
+    reg [DATA_W-1:0] line1[0:IMG_W-1];
+    reg [DATA_W-1:0] line2[0:IMG_W-1];
+
+    // column/row counters
+    reg [$clog2(IMG_W+1)-1:0] col;  // enough bits
+    reg [$clog2(IMG_H+1)-1:0] row;
+
+    integer i;
+    always @(posedge clk) begin
+        if (rst) begin
+            col <= 0;
+            row <= 0;
+            for (i=0; i<IMG_W; i=i+1) begin
+                line0[i] <= 0;
+                line1[i] <= 0;
+                line2[i] <= 0;
+            end
+        end
+        else if (in_valid) begin
+            // newest pixel in line0, older in line1,line2
+            line0[col] <= in_pixel;
+            line1[col] <= line0[col];
+            line2[col] <= line1[col];
+
+            if (col == IMG_W-1) begin
+                col <= 0;
+                row <= row + 1;
+            end else begin
+                col <= col + 1;
+            end
+        end
+    end
+
+    // ---------------------------
+    // Delay coordinates so window a[] is stable before pe reads it
+    // ---------------------------
+    reg [$clog2(IMG_W+1)-1:0] col_d;
+    reg [$clog2(IMG_H+1)-1:0] row_d;
+    reg in_valid_d;
+
+    always @(posedge clk) begin
+        if (rst) begin
+            col_d <= 0;
+            row_d <= 0;
+            in_valid_d <= 0;
+        end else begin
+            col_d <= col;
+            row_d <= row;
+            in_valid_d <= in_valid;
+        end
+    end
+
+    // ---------------------------
+    // Window & win_fire (based on delayed coords)
+    // ---------------------------
+    reg [DATA_W-1:0] a[0:2][0:2];
+    reg win_fire;
+
+    always @(posedge clk) begin
+        if (rst) begin
+            win_fire <= 0;
+            // optional: clear a
+            for (kr=0; kr<3; kr=kr+1)
+                for (kc=0; kc<3; kc=kc+1)
+                    a[kr][kc] <= 0;
+        end else begin
+            // form window using delayed coordinates (so values in line* were settled earlier)
+            win_fire <= (in_valid_d && (row_d >= 2) && (col_d >= 2));
+
+            if (in_valid_d && (row_d >= 2) && (col_d >= 2)) begin
+                a[0][0] <= line2[col_d-2]; a[0][1] <= line2[col_d-1]; a[0][2] <= line2[col_d];
+                a[1][0] <= line1[col_d-2]; a[1][1] <= line1[col_d-1]; a[1][2] <= line1[col_d];
+                a[2][0] <= line0[col_d-2]; a[2][1] <= line0[col_d-1]; a[2][2] <= line0[col_d];
+            end
+        end
+    end
+
+    // ---------------------------
+    // Registered multipliers (PEs)
+    // ---------------------------
+    wire [ACC_W-1:0] m[0:2][0:2];
+    genvar r,c;
+    generate
+        for (r=0; r<3; r=r+1) begin : R
+            for (c=0; c<3; c=c+1) begin : C
+                pe #(.DATA_W(DATA_W), .ACC_W(ACC_W)) PE_inst (
+                    .clk(clk),
+                    .rst(rst),
+                    .a(a[r][c]),
+                    .w(kernel[r][c]),
+                    .y(m[r][c])
+                );
+            end
+        end
+    endgenerate
+
+    // ---------------------------
+    // Accumulate registered products and manage flush
+    // ---------------------------
+    reg fire_d1;
+    reg primed;
+    reg flush;
+    reg [ACC_W-1:0] sum_reg;
+
+    always @(posedge clk) begin
+        if (rst) begin
+            fire_d1 <= 0;
+            primed <= 0;
+            flush <= 0;
+            sum_reg <= 0;
+            out_valid <= 0;
+            out_pixel <= 0;
+        end else begin
+            // fire_d1 is one-cycle delayed version of win_fire: when fire_d1==1 the m[*][*] correspond to the window that was captured previously
+            fire_d1 <= win_fire;
+
+            if (fire_d1) begin
+                // capture sum of registered multipliers (these m[][] are outputs of the PEs)
+                sum_reg <=
+                    m[0][0] + m[0][1] + m[0][2] +
+                    m[1][0] + m[1][1] + m[1][2] +
+                    m[2][0] + m[2][1] + m[2][2];
+                primed <= 1;
+            end
+
+            // detect end of stream → allow one last output
+            if (!in_valid_d && fire_d1)
+                flush <= 1;
+            else
+                flush <= 0;
+
+            out_valid <= (fire_d1 && primed) || flush;
+            if ((fire_d1 && primed) || flush)
+                out_pixel <= sum_reg;
+        end
+    end
+
+endmodule

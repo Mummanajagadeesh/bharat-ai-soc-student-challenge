@@ -1,0 +1,17 @@
+// Auto-generated ROM for 04_conv2d_3_kernel
+// Depth: 9216, Width: 8
+module rom_04_conv2d_3_kernel (
+    input  wire                   clk,
+    input  wire [13:0] addr,
+    output reg  [7:0] data
+);
+    reg [7:0] rom [0:9215];
+
+    initial begin
+        $readmemh("verilog_roms_mems/04_conv2d_3_kernel.mem", rom);
+    end
+
+    always @(posedge clk) begin
+        data <= rom[addr];
+    end
+endmodule

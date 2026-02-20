@@ -1,0 +1,19 @@
+# run.ys
+
+read_verilog design.sv
+hierarchy -auto-top
+tee -a log.txt hierarchy -check
+
+proc; opt; fsm; opt; memory; opt
+
+tee -a log.txt stat
+tee -a log.txt ls
+tee -a log.txt dump
+tee -a log.txt fsm_info
+tee -a log.txt memory
+tee -a log.txt opt_clean -purge
+
+write_verilog synth.v
+write_json synth.json
+
+show -colors 1 -viewer touch -format svg

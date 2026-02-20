@@ -1,0 +1,31 @@
+# run.ys
+
+# Read source
+read_verilog design.sv
+hierarchy -top rom_00_conv2d_bias
+
+# ===== View A: raw frontend =====
+tee -a log.txt log "==== VIEW A: after frontend (before lowering) ===="
+tee -a log.txt stat
+
+# Lower processes, but keep memories abstract
+proc
+opt_clean
+
+# ===== View B: abstract memories preserved =====
+memory -nomap
+memory_dff
+tee -a log.txt log "==== VIEW B: after memory -nomap (abstract memories kept) ===="
+tee -a log.txt stat
+
+# ===== View C: map to Xilinx 7-series BRAMs =====
+synth_xilinx -family xc7 -top rom_00_conv2d_bias
+tee -a log.txt log "==== VIEW C: after synth_xilinx (tech-mapped) ===="
+tee -a log.txt stat
+
+# Write outputs
+write_verilog synth.v
+write_json synth.json
+
+# Schematic (post-mapping)
+show -colors 1 -viewer touch -format svg

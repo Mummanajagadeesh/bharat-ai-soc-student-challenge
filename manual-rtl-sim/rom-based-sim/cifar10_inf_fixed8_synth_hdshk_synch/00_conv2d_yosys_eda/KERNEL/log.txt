@@ -1,0 +1,66 @@
+"==== VIEW A: after frontend (before lowering) ===="
+
+3. Printing statistics.
+
+=== rom_00_conv2d_kernel ===
+
+   Number of wires:                 16
+   Number of wire bits:             61
+   Number of public wires:           9
+   Number of public wire bits:      32
+   Number of memories:               1
+   Number of memory bits:         3456
+   Number of processes:              2
+   Number of cells:                  4
+     $logic_and                      2
+     $meminit_v2                     1
+     $memrd                          1
+
+"==== VIEW B: after memory -nomap (abstract memories kept) ===="
+
+8. Printing statistics.
+
+=== rom_00_conv2d_kernel ===
+
+   Number of wires:                 17
+   Number of wire bits:             53
+   Number of public wires:           8
+   Number of public wire bits:      23
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 12
+     $adff                           2
+     $dff                            1
+     $logic_and                      2
+     $mem_v2                         1
+     $mux                            6
+
+"==== VIEW C: after synth_xilinx (tech-mapped) ===="
+
+10. Printing statistics.
+
+=== rom_00_conv2d_kernel ===
+
+   Number of wires:                 99
+   Number of wire bits:            186
+   Number of public wires:           8
+   Number of public wire bits:      23
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                142
+     BUFG                            1
+     FDCE                            1
+     FDPE                            1
+     FDRE                            8
+     IBUF                           13
+     LUT2                            4
+     LUT3                            1
+     LUT4                            2
+     LUT5                            1
+     LUT6                           62
+     MUXF7                          30
+     MUXF8                           8
+     OBUF                           10
+

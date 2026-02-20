@@ -1,0 +1,61 @@
+"==== VIEW A: after frontend (before lowering) ===="
+
+3. Printing statistics.
+
+=== rom_00_conv2d_bias ===
+
+   Number of wires:                 16
+   Number of wire bits:             46
+   Number of public wires:           9
+   Number of public wire bits:      22
+   Number of memories:               1
+   Number of memory bits:          128
+   Number of processes:              2
+   Number of cells:                  4
+     $logic_and                      2
+     $meminit_v2                     1
+     $memrd                          1
+
+"==== VIEW B: after memory -nomap (abstract memories kept) ===="
+
+8. Printing statistics.
+
+=== rom_00_conv2d_bias ===
+
+   Number of wires:                 17
+   Number of wire bits:             48
+   Number of public wires:           8
+   Number of public wire bits:      18
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 12
+     $adff                           2
+     $dff                            1
+     $logic_and                      2
+     $mem_v2                         1
+     $mux                            6
+
+"==== VIEW C: after synth_xilinx (tech-mapped) ===="
+
+10. Printing statistics.
+
+=== rom_00_conv2d_bias ===
+
+   Number of wires:                 19
+   Number of wire bits:             52
+   Number of public wires:           8
+   Number of public wire bits:      18
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 36
+     BUFG                            1
+     FDCE                            1
+     FDPE                            1
+     FDRE                            6
+     IBUF                            8
+     LUT3                            1
+     LUT4                            8
+     OBUF                           10
+
