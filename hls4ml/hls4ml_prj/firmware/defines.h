@@ -1,0 +1,63 @@
+#ifndef DEFINES_H_
+#define DEFINES_H_
+
+#include "ap_fixed.h"
+#include "ap_int.h"
+#include "nnet_utils/nnet_types.h"
+#include <array>
+#include <cstddef>
+#include <cstdio>
+#include <tuple>
+#include <tuple>
+
+
+// hls-fpga-machine-learning insert numbers
+
+// hls-fpga-machine-learning insert layer-precision
+typedef ap_fixed<16,6> input_t;
+typedef ap_fixed<16,6> model_default_t;
+typedef ap_fixed<16,6> layer2_t;
+typedef ap_fixed<16,6> conv2d_weight_t;
+typedef ap_fixed<16,6> conv2d_bias_t;
+typedef ap_fixed<16,6> layer3_t;
+typedef ap_fixed<18,8> conv2d_relu_table_t;
+typedef ap_fixed<16,6> layer4_t;
+typedef ap_fixed<16,6> conv2d_1_weight_t;
+typedef ap_fixed<16,6> conv2d_1_bias_t;
+typedef ap_fixed<16,6> layer5_t;
+typedef ap_fixed<18,8> conv2d_1_relu_table_t;
+typedef ap_fixed<16,6> layer6_t;
+typedef ap_fixed<16,6> conv2d_2_weight_t;
+typedef ap_fixed<16,6> conv2d_2_bias_t;
+typedef ap_fixed<16,6> layer8_t;
+typedef ap_fixed<16,6> layer9_t;
+typedef ap_fixed<16,6> layer10_t;
+typedef ap_fixed<16,6> conv2d_3_weight_t;
+typedef ap_fixed<16,6> conv2d_3_bias_t;
+typedef ap_fixed<16,6> layer11_t;
+typedef ap_fixed<18,8> conv2d_3_relu_table_t;
+typedef ap_fixed<16,6> layer12_t;
+typedef ap_fixed<16,6> conv2d_4_weight_t;
+typedef ap_fixed<16,6> conv2d_4_bias_t;
+typedef ap_fixed<16,6> layer13_t;
+typedef ap_fixed<18,8> conv2d_4_relu_table_t;
+typedef ap_fixed<16,6> layer14_t;
+typedef ap_fixed<16,6> conv2d_5_weight_t;
+typedef ap_fixed<16,6> conv2d_5_bias_t;
+typedef ap_fixed<16,6> layer16_t;
+typedef ap_fixed<16,6> layer17_t;
+typedef ap_fixed<16,6> layer18_t;
+typedef ap_fixed<16,6> layer19_t;
+typedef ap_fixed<16,6> dense_weight_t;
+typedef ap_fixed<16,6> dense_bias_t;
+typedef ap_uint<1> layer19_index;
+typedef ap_fixed<16,6> result_t;
+typedef ap_fixed<18,8> dense_softmax_table_t;
+typedef ap_fixed<18,8,AP_RND,AP_SAT,0> dense_softmax_exp_table_t;
+typedef ap_fixed<18,8,AP_RND,AP_SAT,0> dense_softmax_inv_table_t;
+typedef ap_fixed<18,8,AP_RND,AP_SAT,0> dense_softmax_inv_inp_t;
+
+// hls-fpga-machine-learning insert emulator-defines
+
+
+#endif
