@@ -159,8 +159,6 @@ void k2c_conv1d(k2c_tensor* output, const k2c_tensor* input, const k2c_tensor* k
     for (size_t x0=0; x0 < out_times; ++x0) {
         for (size_t z=0; z < kernel->shape[0]; ++z) {
             for (size_t q=0; q < in_channels; ++q) {
-#pragma GCC ivdep
-#pragma GCC unroll 4
                 for (size_t k=0; k < out_channels; ++k) {
                     output->array[x0*out_channels + k] +=
                         kernel->array[z*(kernel->shape[2]*kernel->shape[1]) +
@@ -203,8 +201,6 @@ void k2c_conv2d(k2c_tensor* output, const k2c_tensor* input, const k2c_tensor* k
             for (size_t z0=0; z0 < kernel->shape[0]; ++z0) {
                 for (size_t z1=0; z1 < kernel->shape[1]; ++z1) {
                     for (size_t q=0; q < in_channels; ++q) {
-#pragma GCC ivdep
-#pragma GCC unroll 4
                         for (size_t k=0; k < out_channels; ++k) {
                             output->array[x0*(output->shape[2]*output->shape[1])
                                           + x1*(output->shape[2]) + k] +=
@@ -255,8 +251,6 @@ void k2c_conv3d(k2c_tensor* output, const k2c_tensor* input, const k2c_tensor* k
                     for (size_t z1=0; z1 < kernel->shape[1]; ++z1) {
                         for (size_t z2=0; z2 < kernel->shape[2]; ++z2) {
                             for (size_t q=0; q < in_channels; ++q) {
-#pragma GCC ivdep
-#pragma GCC unroll 4
                                 for (size_t k=0; k < out_channels; ++k) {
                                     output->array[x0*(output->shape[3]*output->shape[2]
                                                       *output->shape[1])

@@ -10670,9 +10670,39 @@ k2c_pad2d(&conv2d_2_padded_input,input_layer_input,conv2d_2_fill,
 	conv2d_2_pad); 
 k2c_conv2d(&keras_tensor_5_output,&conv2d_2_padded_input,&conv2d_2_kernel, 
 	&conv2d_2_bias,conv2d_2_stride,conv2d_2_dilation,k2c_linear); 
-k2c_add(&keras_tensor_8_output,add_num_tensors0,&keras_tensor_3_output,&keras_tensor_5_output); 
-k2c_maxpool2d(&keras_tensor_10_output,&keras_tensor_8_output,max_pooling2d_pool_size, 
-	max_pooling2d_stride); 
+
+/* fused add + maxpool2d : (32x32x28) -> (16x16x28) */
+{
+    float *out = keras_tensor_10_output.array;
+    const float *a = keras_tensor_3_output.array;
+    const float *b = keras_tensor_5_output.array;
+
+    const size_t W = 32, C = 28;
+    const size_t outW = 16;
+
+    for (size_t oh = 0; oh < 16; ++oh) {
+        for (size_t ow = 0; ow < 16; ++ow) {
+            const size_t ih = oh << 1;
+            const size_t iw = ow << 1;
+
+            for (size_t c = 0; c < C; ++c) {
+                float m = -1e30f;
+
+                for (size_t dh = 0; dh < 2; ++dh) {
+                    const size_t row = (ih + dh) * W * C;
+                    for (size_t dw = 0; dw < 2; ++dw) {
+                        const size_t idx = row + (iw + dw) * C + c;
+                        float v = a[idx] + b[idx];
+                        m = v > m ? v : m;
+                    }
+                }
+                out[(oh * outW + ow) * C + c] = m;
+            }
+        }
+    }
+}
+
+
 k2c_pad2d(&conv2d_3_padded_input,&keras_tensor_10_output,conv2d_3_fill, 
 	conv2d_3_pad); 
 k2c_conv2d(&keras_tensor_12_output,&conv2d_3_padded_input,&conv2d_3_kernel, 
@@ -10685,9 +10715,37 @@ k2c_pad2d(&conv2d_5_padded_input,&keras_tensor_10_output,conv2d_5_fill,
 	conv2d_5_pad); 
 k2c_conv2d(&keras_tensor_16_output,&conv2d_5_padded_input,&conv2d_5_kernel, 
 	&conv2d_5_bias,conv2d_5_stride,conv2d_5_dilation,k2c_linear); 
-k2c_add(&keras_tensor_19_output,add_1_num_tensors0,&keras_tensor_14_output,&keras_tensor_16_output); 
-k2c_maxpool2d(&keras_tensor_21_output,&keras_tensor_19_output,max_pooling2d_1_pool_size, 
-	max_pooling2d_1_stride); 
+/* fused add + maxpool2d : (16x16x56) -> (8x8x56) */
+{
+    float *out = keras_tensor_21_output.array;
+    const float *a = keras_tensor_14_output.array;
+    const float *b = keras_tensor_16_output.array;
+
+    const size_t W = 16, C = 56;
+    const size_t outW = 8;
+
+    for (size_t oh = 0; oh < 8; ++oh) {
+        for (size_t ow = 0; ow < 8; ++ow) {
+            const size_t ih = oh << 1;
+            const size_t iw = ow << 1;
+
+            for (size_t c = 0; c < C; ++c) {
+                float m = -1e30f;
+
+                for (size_t dh = 0; dh < 2; ++dh) {
+                    const size_t row = (ih + dh) * W * C;
+                    for (size_t dw = 0; dw < 2; ++dw) {
+                        const size_t idx = row + (iw + dw) * C + c;
+                        float v = a[idx] + b[idx];
+                        m = v > m ? v : m;
+                    }
+                }
+                out[(oh * outW + ow) * C + c] = m;
+            }
+        }
+    }
+}
+
 k2c_global_avg_pooling(&keras_tensor_23_output,&keras_tensor_21_output); 
 k2c_dense(keras_tensor_25_output,&keras_tensor_23_output,&dense_kernel, 
 	&dense_bias,k2c_softmax,dense_fwork); 
