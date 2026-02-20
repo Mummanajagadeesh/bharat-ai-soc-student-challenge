@@ -1,0 +1,121 @@
+================================================================================
+CIFAR-10 INFERENCE BENCHMARK RESULTS
+================================================================================
+
+Individual Image Results:
+--------------------------------------------------------------------------------
+Image                               Time (ms)    Prediction   Actual       Result
+--------------------------------------------------------------------------------
+airplane/airplane_0.png                865.782   airplane     airplane     CORRECT
+airplane/airplane_1.png                897.451   airplane     airplane     CORRECT
+airplane/airplane_2.png                882.144   truck        airplane     WRONG
+airplane/airplane_3.png                859.542   airplane     airplane     CORRECT
+airplane/airplane_4.png                873.157   airplane     airplane     CORRECT
+airplane/airplane_5.png                910.415   airplane     airplane     CORRECT
+airplane/airplane_6.png                883.461   airplane     airplane     CORRECT
+airplane/airplane_7.png                878.061   airplane     airplane     CORRECT
+airplane/airplane_8.png                852.381   airplane     airplane     CORRECT
+airplane/airplane_9.png                870.499   airplane     airplane     CORRECT
+automobile/automobile_0.png            903.831   automobile   automobile   CORRECT
+automobile/automobile_1.png            856.720   automobile   automobile   CORRECT
+automobile/automobile_2.png            857.214   automobile   automobile   CORRECT
+automobile/automobile_3.png            864.191   automobile   automobile   CORRECT
+automobile/automobile_4.png            856.411   automobile   automobile   CORRECT
+automobile/automobile_5.png            866.326   automobile   automobile   CORRECT
+automobile/automobile_6.png            856.066   automobile   automobile   CORRECT
+automobile/automobile_7.png            958.855   automobile   automobile   CORRECT
+automobile/automobile_8.png            869.065   dog          automobile   WRONG
+automobile/automobile_9.png            872.743   horse        automobile   WRONG
+bird/bird_0.png                        905.871   airplane     bird         WRONG
+bird/bird_1.png                        917.598   bird         bird         CORRECT
+bird/bird_2.png                        909.802   bird         bird         CORRECT
+bird/bird_3.png                        922.858   bird         bird         CORRECT
+bird/bird_4.png                        928.921   bird         bird         CORRECT
+bird/bird_5.png                        915.777   bird         bird         CORRECT
+bird/bird_6.png                        912.545   bird         bird         CORRECT
+bird/bird_7.png                        907.897   bird         bird         CORRECT
+bird/bird_8.png                        942.817   bird         bird         CORRECT
+bird/bird_9.png                        911.334   cat          bird         WRONG
+cat/cat_0.png                          902.714   cat          cat          CORRECT
+cat/cat_1.png                          909.892   cat          cat          CORRECT
+cat/cat_2.png                          911.648   dog          cat          WRONG
+cat/cat_3.png                          943.053   cat          cat          CORRECT
+cat/cat_4.png                          917.750   cat          cat          CORRECT
+cat/cat_5.png                          910.595   cat          cat          CORRECT
+cat/cat_6.png                          921.156   cat          cat          CORRECT
+cat/cat_7.png                          959.706   dog          cat          WRONG
+cat/cat_8.png                          932.320   horse        cat          WRONG
+cat/cat_9.png                          933.899   cat          cat          CORRECT
+deer/deer_0.png                        975.689   deer         deer         CORRECT
+deer/deer_1.png                        947.731   deer         deer         CORRECT
+deer/deer_2.png                        925.906   deer         deer         CORRECT
+deer/deer_3.png                        928.536   deer         deer         CORRECT
+deer/deer_4.png                        917.936   ship         deer         WRONG
+deer/deer_5.png                        902.152   deer         deer         CORRECT
+deer/deer_6.png                        909.342   bird         deer         WRONG
+deer/deer_7.png                        905.415   deer         deer         CORRECT
+deer/deer_8.png                        921.686   frog         deer         WRONG
+deer/deer_9.png                        923.621   deer         deer         CORRECT
+dog/dog_0.png                          950.400   dog          dog          CORRECT
+dog/dog_1.png                          940.565   dog          dog          CORRECT
+dog/dog_2.png                          902.633   dog          dog          CORRECT
+dog/dog_3.png                          914.391   horse        dog          WRONG
+dog/dog_4.png                          911.233   dog          dog          CORRECT
+dog/dog_5.png                          920.759   dog          dog          CORRECT
+dog/dog_6.png                          903.082   dog          dog          CORRECT
+dog/dog_7.png                          909.740   dog          dog          CORRECT
+dog/dog_8.png                          913.558   dog          dog          CORRECT
+dog/dog_9.png                          906.191   cat          dog          WRONG
+frog/frog_0.png                        905.779   frog         frog         CORRECT
+frog/frog_1.png                        903.696   frog         frog         CORRECT
+frog/frog_2.png                        968.696   frog         frog         CORRECT
+frog/frog_3.png                        907.983   frog         frog         CORRECT
+frog/frog_4.png                        913.381   frog         frog         CORRECT
+frog/frog_5.png                        906.568   frog         frog         CORRECT
+frog/frog_6.png                        904.479   frog         frog         CORRECT
+frog/frog_7.png                        941.184   frog         frog         CORRECT
+frog/frog_8.png                        936.843   frog         frog         CORRECT
+frog/frog_9.png                        900.689   frog         frog         CORRECT
+horse/horse_0.png                      903.567   horse        horse        CORRECT
+horse/horse_1.png                      950.585   horse        horse        CORRECT
+horse/horse_2.png                      954.240   horse        horse        CORRECT
+horse/horse_3.png                      944.404   cat          horse        WRONG
+horse/horse_4.png                      948.873   horse        horse        CORRECT
+horse/horse_5.png                      933.237   horse        horse        CORRECT
+horse/horse_6.png                      946.840   horse        horse        CORRECT
+horse/horse_7.png                      951.909   horse        horse        CORRECT
+horse/horse_8.png                      948.031   horse        horse        CORRECT
+horse/horse_9.png                      952.650   horse        horse        CORRECT
+ship/ship_0.png                        932.105   ship         ship         CORRECT
+ship/ship_1.png                        924.113   ship         ship         CORRECT
+ship/ship_2.png                       1021.991   ship         ship         CORRECT
+ship/ship_3.png                        942.665   ship         ship         CORRECT
+ship/ship_4.png                        934.597   ship         ship         CORRECT
+ship/ship_5.png                        933.863   ship         ship         CORRECT
+ship/ship_6.png                        924.211   ship         ship         CORRECT
+ship/ship_7.png                        930.774   ship         ship         CORRECT
+ship/ship_8.png                        947.181   ship         ship         CORRECT
+ship/ship_9.png                        959.636   ship         ship         CORRECT
+truck/truck_0.png                      969.811   truck        truck        CORRECT
+truck/truck_1.png                      931.783   truck        truck        CORRECT
+truck/truck_2.png                      996.911   truck        truck        CORRECT
+truck/truck_3.png                      956.813   automobile   truck        WRONG
+truck/truck_4.png                      992.388   truck        truck        CORRECT
+truck/truck_5.png                      966.484   truck        truck        CORRECT
+truck/truck_6.png                      972.508   truck        truck        CORRECT
+truck/truck_7.png                      977.271   automobile   truck        WRONG
+truck/truck_8.png                      959.266   truck        truck        CORRECT
+truck/truck_9.png                      992.186   truck        truck        CORRECT
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+
+Total Images:           100
+Minimum Time:           852.381 ms
+Maximum Time:           1021.991 ms
+Average Time:           921.732 ms
+Standard Deviation:     34.162 ms
+Accuracy:               84/100 (84.00%)
+
+================================================================================

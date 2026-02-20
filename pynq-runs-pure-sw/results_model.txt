@@ -1,0 +1,113 @@
+Idx | Image                | Pred       | Actual     |  Time(ms) | OK
+---------------------------------------------------------------------
+000 | airplane_0.png       | airplane   | airplane   |   674.807 | ✅
+001 | airplane_1.png       | airplane   | airplane   |    49.682 | ✅
+002 | airplane_2.png       | truck      | airplane   |    49.034 | ❌
+003 | airplane_3.png       | airplane   | airplane   |    54.246 | ✅
+004 | airplane_4.png       | airplane   | airplane   |    49.745 | ✅
+005 | airplane_5.png       | airplane   | airplane   |    50.452 | ✅
+006 | airplane_6.png       | airplane   | airplane   |    51.399 | ✅
+007 | airplane_7.png       | airplane   | airplane   |    50.888 | ✅
+008 | airplane_8.png       | airplane   | airplane   |    51.914 | ✅
+009 | airplane_9.png       | airplane   | airplane   |    48.642 | ✅
+010 | automobile_0.png     | automobile | automobile |    48.436 | ✅
+011 | automobile_1.png     | automobile | automobile |    50.955 | ✅
+012 | automobile_2.png     | automobile | automobile |    50.189 | ✅
+013 | automobile_3.png     | automobile | automobile |    49.518 | ✅
+014 | automobile_4.png     | automobile | automobile |    49.825 | ✅
+015 | automobile_5.png     | automobile | automobile |    51.310 | ✅
+016 | automobile_6.png     | automobile | automobile |    49.123 | ✅
+017 | automobile_7.png     | automobile | automobile |    48.264 | ✅
+018 | automobile_8.png     | dog        | automobile |    49.504 | ❌
+019 | automobile_9.png     | horse      | automobile |    49.710 | ❌
+020 | bird_0.png           | truck      | bird       |    50.325 | ❌
+021 | bird_1.png           | bird       | bird       |    49.564 | ✅
+022 | bird_2.png           | bird       | bird       |    48.344 | ✅
+023 | bird_3.png           | bird       | bird       |    50.763 | ✅
+024 | bird_4.png           | bird       | bird       |    50.495 | ✅
+025 | bird_5.png           | deer       | bird       |    50.828 | ❌
+026 | bird_6.png           | bird       | bird       |    48.924 | ✅
+027 | bird_7.png           | bird       | bird       |    51.460 | ✅
+028 | bird_8.png           | bird       | bird       |    50.541 | ✅
+029 | bird_9.png           | cat        | bird       |    49.202 | ❌
+030 | cat_0.png            | cat        | cat        |    52.836 | ✅
+031 | cat_1.png            | cat        | cat        |    50.728 | ✅
+032 | cat_2.png            | dog        | cat        |    48.711 | ❌
+033 | cat_3.png            | cat        | cat        |    49.095 | ✅
+034 | cat_4.png            | cat        | cat        |    49.439 | ✅
+035 | cat_5.png            | cat        | cat        |    49.981 | ✅
+036 | cat_6.png            | cat        | cat        |    49.609 | ✅
+037 | cat_7.png            | dog        | cat        |    49.399 | ❌
+038 | cat_8.png            | horse      | cat        |    49.963 | ❌
+039 | cat_9.png            | cat        | cat        |    51.042 | ✅
+040 | deer_0.png           | deer       | deer       |    51.428 | ✅
+041 | deer_1.png           | deer       | deer       |    50.357 | ✅
+042 | deer_2.png           | deer       | deer       |    49.334 | ✅
+043 | deer_3.png           | deer       | deer       |    50.953 | ✅
+044 | deer_4.png           | ship       | deer       |    52.618 | ❌
+045 | deer_5.png           | deer       | deer       |    49.943 | ✅
+046 | deer_6.png           | bird       | deer       |    49.971 | ❌
+047 | deer_7.png           | deer       | deer       |    53.308 | ✅
+048 | deer_8.png           | deer       | deer       |    50.049 | ✅
+049 | deer_9.png           | deer       | deer       |    52.081 | ✅
+050 | dog_0.png            | dog        | dog        |    49.564 | ✅
+051 | dog_1.png            | dog        | dog        |    53.280 | ✅
+052 | dog_2.png            | dog        | dog        |    50.996 | ✅
+053 | dog_3.png            | horse      | dog        |    50.660 | ❌
+054 | dog_4.png            | dog        | dog        |    50.674 | ✅
+055 | dog_5.png            | dog        | dog        |    50.395 | ✅
+056 | dog_6.png            | dog        | dog        |    50.558 | ✅
+057 | dog_7.png            | dog        | dog        |    49.252 | ✅
+058 | dog_8.png            | dog        | dog        |    48.521 | ✅
+059 | dog_9.png            | cat        | dog        |    51.491 | ❌
+060 | frog_0.png           | frog       | frog       |    49.728 | ✅
+061 | frog_1.png           | frog       | frog       |    50.313 | ✅
+062 | frog_2.png           | frog       | frog       |    49.356 | ✅
+063 | frog_3.png           | frog       | frog       |    51.661 | ✅
+064 | frog_4.png           | frog       | frog       |    51.507 | ✅
+065 | frog_5.png           | frog       | frog       |    50.059 | ✅
+066 | frog_6.png           | frog       | frog       |    49.844 | ✅
+067 | frog_7.png           | frog       | frog       |    51.337 | ✅
+068 | frog_8.png           | frog       | frog       |    50.680 | ✅
+069 | frog_9.png           | frog       | frog       |    50.155 | ✅
+070 | horse_0.png          | horse      | horse      |    49.649 | ✅
+071 | horse_1.png          | horse      | horse      |    51.036 | ✅
+072 | horse_2.png          | horse      | horse      |    50.895 | ✅
+073 | horse_3.png          | cat        | horse      |    50.160 | ❌
+074 | horse_4.png          | horse      | horse      |    50.076 | ✅
+075 | horse_5.png          | horse      | horse      |    54.303 | ✅
+076 | horse_6.png          | horse      | horse      |    51.587 | ✅
+077 | horse_7.png          | horse      | horse      |    48.289 | ✅
+078 | horse_8.png          | horse      | horse      |    50.527 | ✅
+079 | horse_9.png          | horse      | horse      |    52.388 | ✅
+080 | ship_0.png           | ship       | ship       |    50.154 | ✅
+081 | ship_1.png           | ship       | ship       |    49.034 | ✅
+082 | ship_2.png           | ship       | ship       |    49.527 | ✅
+083 | ship_3.png           | ship       | ship       |    50.225 | ✅
+084 | ship_4.png           | ship       | ship       |    49.372 | ✅
+085 | ship_5.png           | ship       | ship       |    49.256 | ✅
+086 | ship_6.png           | ship       | ship       |    50.929 | ✅
+087 | ship_7.png           | ship       | ship       |    50.754 | ✅
+088 | ship_8.png           | ship       | ship       |    50.983 | ✅
+089 | ship_9.png           | ship       | ship       |    50.316 | ✅
+090 | truck_0.png          | truck      | truck      |    49.871 | ✅
+091 | truck_1.png          | truck      | truck      |    53.282 | ✅
+092 | truck_2.png          | truck      | truck      |    49.762 | ✅
+093 | truck_3.png          | automobile | truck      |    48.835 | ❌
+094 | truck_4.png          | truck      | truck      |    49.761 | ✅
+095 | truck_5.png          | truck      | truck      |    51.065 | ✅
+096 | truck_6.png          | truck      | truck      |    49.700 | ✅
+097 | truck_7.png          | automobile | truck      |    48.735 | ❌
+098 | truck_8.png          | truck      | truck      |    50.421 | ✅
+099 | truck_9.png          | truck      | truck      |    53.932 | ✅
+
+========== SUMMARY ==========
+Total Images : 100
+Correct      : 84
+Accuracy     : 84.00 %
+
+Inference Time (ms):
+Min   : 48.264
+Max   : 674.807
+Avg   : 56.638
+Std   : 62.141

@@ -1,0 +1,111 @@
+Image 000: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29892.683 ms
+Image 001: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29821.650 ms
+Image 002: Pred = 9 (truck), Actual = 0 (airplane) ❌ | 29824.840 ms
+Image 003: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29732.492 ms
+Image 004: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29715.139 ms
+Image 005: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29731.396 ms
+Image 006: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29814.151 ms
+Image 007: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29708.365 ms
+Image 008: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29690.852 ms
+Image 009: Pred = 0 (airplane), Actual = 0 (airplane) ✅ | 29652.494 ms
+Image 010: Pred = 1 (automobile), Actual = 1 (automobile) ✅ | 29729.919 ms
+Image 011: Pred = 1 (automobile), Actual = 1 (automobile) ✅ | 29652.745 ms
+Image 012: Pred = 1 (automobile), Actual = 1 (automobile) ✅ | 29742.798 ms
+Image 013: Pred = 1 (automobile), Actual = 1 (automobile) ✅ | 29649.963 ms
+Image 014: Pred = 1 (automobile), Actual = 1 (automobile) ✅ | 29750.311 ms
+Image 015: Pred = 1 (automobile), Actual = 1 (automobile) ✅ | 29689.315 ms
+Image 016: Pred = 1 (automobile), Actual = 1 (automobile) ✅ | 29696.415 ms
+Image 017: Pred = 1 (automobile), Actual = 1 (automobile) ✅ | 29643.819 ms
+Image 018: Pred = 5 (dog), Actual = 1 (automobile) ❌ | 29689.206 ms
+Image 019: Pred = 7 (horse), Actual = 1 (automobile) ❌ | 29642.507 ms
+Image 020: Pred = 0 (airplane), Actual = 2 (bird) ❌ | 29723.782 ms
+Image 021: Pred = 2 (bird), Actual = 2 (bird) ✅ | 29648.777 ms
+Image 022: Pred = 2 (bird), Actual = 2 (bird) ✅ | 29693.058 ms
+Image 023: Pred = 2 (bird), Actual = 2 (bird) ✅ | 29616.262 ms
+Image 024: Pred = 2 (bird), Actual = 2 (bird) ✅ | 29732.896 ms
+Image 025: Pred = 2 (bird), Actual = 2 (bird) ✅ | 29617.167 ms
+Image 026: Pred = 2 (bird), Actual = 2 (bird) ✅ | 29704.441 ms
+Image 027: Pred = 2 (bird), Actual = 2 (bird) ✅ | 29624.457 ms
+Image 028: Pred = 2 (bird), Actual = 2 (bird) ✅ | 29700.923 ms
+Image 029: Pred = 3 (cat), Actual = 2 (bird) ❌ | 29633.416 ms
+Image 030: Pred = 3 (cat), Actual = 3 (cat) ✅ | 29689.612 ms
+Image 031: Pred = 3 (cat), Actual = 3 (cat) ✅ | 29676.923 ms
+Image 032: Pred = 5 (dog), Actual = 3 (cat) ❌ | 29763.045 ms
+Image 033: Pred = 3 (cat), Actual = 3 (cat) ✅ | 29635.030 ms
+Image 034: Pred = 3 (cat), Actual = 3 (cat) ✅ | 29683.612 ms
+Image 035: Pred = 3 (cat), Actual = 3 (cat) ✅ | 29639.679 ms
+Image 036: Pred = 3 (cat), Actual = 3 (cat) ✅ | 29688.303 ms
+Image 037: Pred = 5 (dog), Actual = 3 (cat) ❌ | 29621.230 ms
+Image 038: Pred = 7 (horse), Actual = 3 (cat) ❌ | 29713.989 ms
+Image 039: Pred = 3 (cat), Actual = 3 (cat) ✅ | 29639.985 ms
+Image 040: Pred = 4 (deer), Actual = 4 (deer) ✅ | 29723.584 ms
+Image 041: Pred = 4 (deer), Actual = 4 (deer) ✅ | 29615.329 ms
+Image 042: Pred = 4 (deer), Actual = 4 (deer) ✅ | 29732.593 ms
+Image 043: Pred = 4 (deer), Actual = 4 (deer) ✅ | 29634.528 ms
+Image 044: Pred = 8 (ship), Actual = 4 (deer) ❌ | 29712.796 ms
+Image 045: Pred = 4 (deer), Actual = 4 (deer) ✅ | 29610.999 ms
+Image 046: Pred = 2 (bird), Actual = 4 (deer) ❌ | 29717.680 ms
+Image 047: Pred = 4 (deer), Actual = 4 (deer) ✅ | 29677.711 ms
+Image 048: Pred = 6 (frog), Actual = 4 (deer) ❌ | 29860.060 ms
+Image 049: Pred = 4 (deer), Actual = 4 (deer) ✅ | 29630.689 ms
+Image 050: Pred = 5 (dog), Actual = 5 (dog) ✅ | 29718.288 ms
+Image 051: Pred = 5 (dog), Actual = 5 (dog) ✅ | 29669.515 ms
+Image 052: Pred = 5 (dog), Actual = 5 (dog) ✅ | 29699.269 ms
+Image 053: Pred = 7 (horse), Actual = 5 (dog) ❌ | 29664.903 ms
+Image 054: Pred = 5 (dog), Actual = 5 (dog) ✅ | 29709.648 ms
+Image 055: Pred = 5 (dog), Actual = 5 (dog) ✅ | 29676.804 ms
+Image 056: Pred = 5 (dog), Actual = 5 (dog) ✅ | 29745.769 ms
+Image 057: Pred = 5 (dog), Actual = 5 (dog) ✅ | 29691.591 ms
+Image 058: Pred = 5 (dog), Actual = 5 (dog) ✅ | 29717.147 ms
+Image 059: Pred = 3 (cat), Actual = 5 (dog) ❌ | 29646.213 ms
+Image 060: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29751.525 ms
+Image 061: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29641.527 ms
+Image 062: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29767.988 ms
+Image 063: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29658.678 ms
+Image 064: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29723.501 ms
+Image 065: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29663.151 ms
+Image 066: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29710.322 ms
+Image 067: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29682.545 ms
+Image 068: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29744.972 ms
+Image 069: Pred = 6 (frog), Actual = 6 (frog) ✅ | 29665.696 ms
+Image 070: Pred = 7 (horse), Actual = 7 (horse) ✅ | 29718.865 ms
+Image 071: Pred = 7 (horse), Actual = 7 (horse) ✅ | 29679.301 ms
+Image 072: Pred = 7 (horse), Actual = 7 (horse) ✅ | 29740.217 ms
+Image 073: Pred = 3 (cat), Actual = 7 (horse) ❌ | 29635.837 ms
+Image 074: Pred = 7 (horse), Actual = 7 (horse) ✅ | 29806.739 ms
+Image 075: Pred = 7 (horse), Actual = 7 (horse) ✅ | 30207.396 ms
+Image 076: Pred = 7 (horse), Actual = 7 (horse) ✅ | 29738.836 ms
+Image 077: Pred = 7 (horse), Actual = 7 (horse) ✅ | 29632.950 ms
+Image 078: Pred = 7 (horse), Actual = 7 (horse) ✅ | 29697.229 ms
+Image 079: Pred = 7 (horse), Actual = 7 (horse) ✅ | 29651.016 ms
+Image 080: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29731.328 ms
+Image 081: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29802.883 ms
+Image 082: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29692.748 ms
+Image 083: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29639.622 ms
+Image 084: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29740.504 ms
+Image 085: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29618.005 ms
+Image 086: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29726.724 ms
+Image 087: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29654.199 ms
+Image 088: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29717.427 ms
+Image 089: Pred = 8 (ship), Actual = 8 (ship) ✅ | 29674.590 ms
+Image 090: Pred = 9 (truck), Actual = 9 (truck) ✅ | 29701.801 ms
+Image 091: Pred = 9 (truck), Actual = 9 (truck) ✅ | 29755.341 ms
+Image 092: Pred = 9 (truck), Actual = 9 (truck) ✅ | 29735.209 ms
+Image 093: Pred = 1 (automobile), Actual = 9 (truck) ❌ | 29656.569 ms
+Image 094: Pred = 9 (truck), Actual = 9 (truck) ✅ | 29697.445 ms
+Image 095: Pred = 9 (truck), Actual = 9 (truck) ✅ | 29637.608 ms
+Image 096: Pred = 9 (truck), Actual = 9 (truck) ✅ | 29770.845 ms
+Image 097: Pred = 1 (automobile), Actual = 9 (truck) ❌ | 29655.114 ms
+Image 098: Pred = 9 (truck), Actual = 9 (truck) ✅ | 29783.764 ms
+Image 099: Pred = 9 (truck), Actual = 9 (truck) ✅ | 29667.172 ms
+
+========== SUMMARY ==========
+Total Images : 100
+Correct      : 84
+Accuracy     : 84%
+
+Inference Time (ms):
+Min : 29610.999
+Max : 30207.396
+Avg : 29703.500
+Std : 75.307
