@@ -1,0 +1,44 @@
+layer_0_bias.txt: 32
+layer_0_kernel.txt: 3 3 3 32
+layer_1_beta.txt: 32
+layer_1_gamma.txt: 32
+layer_1_moving_mean.txt: 32
+layer_1_moving_variance.txt: 32
+layer_2_bias.txt: 32
+layer_2_kernel.txt: 3 3 32 32
+layer_3_beta.txt: 32
+layer_3_gamma.txt: 32
+layer_3_moving_mean.txt: 32
+layer_3_moving_variance.txt: 32
+layer_6_bias.txt: 64
+layer_6_kernel.txt: 3 3 32 64
+layer_7_beta.txt: 64
+layer_7_gamma.txt: 64
+layer_7_moving_mean.txt: 64
+layer_7_moving_variance.txt: 64
+layer_8_bias.txt: 64
+layer_8_kernel.txt: 3 3 64 64
+layer_9_beta.txt: 64
+layer_9_gamma.txt: 64
+layer_9_moving_mean.txt: 64
+layer_9_moving_variance.txt: 64
+layer_12_bias.txt: 128
+layer_12_kernel.txt: 3 3 64 128
+layer_13_beta.txt: 128
+layer_13_gamma.txt: 128
+layer_13_moving_mean.txt: 128
+layer_13_moving_variance.txt: 128
+layer_14_bias.txt: 128
+layer_14_kernel.txt: 3 3 128 128
+layer_15_beta.txt: 128
+layer_15_gamma.txt: 128
+layer_15_moving_mean.txt: 128
+layer_15_moving_variance.txt: 128
+layer_19_bias.txt: 256
+layer_19_kernel.txt: 2048 256
+layer_20_beta.txt: 256
+layer_20_gamma.txt: 256
+layer_20_moving_mean.txt: 256
+layer_20_moving_variance.txt: 256
+layer_22_bias.txt: 10
+layer_22_kernel.txt: 256 10

@@ -1,0 +1,14 @@
+layer_0_bias.txt: 32
+layer_0_kernel.txt: 3 3 3 32
+layer_1_bias.txt: 32
+layer_1_kernel.txt: 3 3 32 32
+layer_3_bias.txt: 64
+layer_3_kernel.txt: 3 3 32 64
+layer_4_bias.txt: 64
+layer_4_kernel.txt: 3 3 64 64
+layer_6_bias.txt: 96
+layer_6_kernel.txt: 3 3 64 96
+layer_9_bias.txt: 256
+layer_9_kernel.txt: 1536 256
+layer_10_bias.txt: 10
+layer_10_kernel.txt: 256 10

@@ -1,0 +1,2 @@
+Test Loss: 0.3484758138656616
+Test Accuracy: 88.84%
