@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# ==============================================================================
+# Ultimate Xilinx FINN Docker Launcher (Zybo Z7-10 Edition)
+# Automates Vivado mounts, Brevitas dependencies, and prevents terminal freezes.
+# ==============================================================================
+
+# 1. Define Host Directories
+FINN_DIR=$(pwd)
+XILINX_BASE="/tools/Xilinx"
+VIVADO_VERSION="2022.2"
+
+# 2. Fix the empty host variables that caused the initial Docker crash
+mkdir -p "$HOME/.Xilinx"
+export XILINX_LOCAL_USER_DATA="$HOME/.Xilinx"
+export FINN_WORKDIR="$FINN_DIR"
+export FINN_ROOT="$FINN_DIR"
+
+# 3. Generate the container's internal startup script
+# This runs automatically INSIDE the container to fix dependencies before giving you control
+cat << 'INNER_EOF' > .container_startup.sh
+#!/bin/bash
+echo "========================================"
+echo " 🛠️ Applying Brevitas & QONNX version fixes..."
+echo "========================================"
+export SETUPTOOLS_SCM_PRETEND_VERSION=1.0.0
+pip install -e deps/qonnx -q
+pip install -e deps/brevitas -q
+
+echo " 📂 Setting up FINN build environment..."
+export PYTHONPATH="${FINN_ROOT}/src"
+export FINN_BUILD_DIR="${FINN_ROOT}/finn_zybo_project/finn_build_temp"
+mkdir -p "$FINN_BUILD_DIR"
+
+echo " ✅ Ready! Dropping you into the project folder."
+echo "========================================"
+cd finn_zybo_project || exit
+
+# Replace the startup process with an interactive bash shell so the terminal stays open
+exec /bin/bash
+INNER_EOF
+
+# Make the internal script executable
+chmod +x .container_startup.sh
+
+# 4. Launch the Docker Container
+echo "🚀 Launching FINN Compiler Environment..."
+
+docker run -it --rm \
+  -v "${FINN_DIR}:${FINN_DIR}" \
+  -v "${XILINX_BASE}:${XILINX_BASE}" \
+  -e FINN_ROOT="${FINN_DIR}" \
+  -e VIVADO_PATH="${XILINX_BASE}/Vivado/${VIVADO_VERSION}" \
+  -e VITIS_PATH="${XILINX_BASE}/Vitis/${VIVADO_VERSION}" \
+  -e HLS_PATH="${XILINX_BASE}/Vitis_HLS/${VIVADO_VERSION}" \
+  -w "${FINN_DIR}" \
+  xilinx/finn:v0.10.1-4-g9b1f45e9.xrt_202220.2.14.354_22.04-amd64-xrt \
+  ./.container_startup.sh

@@ -1,0 +1,136 @@
+
+
+================================================================
+== Vitis HLS Report for 'MVAU_hls_1'
+================================================================
+* Date:           Fri Feb 20 14:42:23 2026
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        project_MVAU_hls_1
+* Solution:       sol1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z010-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.591 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+--------+--------+---------+
+    |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline|
+    |   min   |   max   |    min   |    max   |   min  |   max  |   Type  |
+    +---------+---------+----------+----------+--------+--------+---------+
+    |   903178|   903178|  9.032 ms|  9.032 ms|  903179|  903179|       no|
+    +---------+---------+----------+----------+--------+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 4
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.00>
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 5 [2/2] (0.00ns)   --->   "%call_ln37 = call void @Matrix_Vector_Activate_Stream_Batch, i8 %in0_V, i8 %out_V, i8 %weights_V, i10 %p_ZL7threshs_0, i10 %p_ZL7threshs_1, i10 %p_ZL7threshs_2, i10 %p_ZL7threshs_3, i10 %p_ZL7threshs_4, i10 %p_ZL7threshs_5, i11 %p_ZL7threshs_6, i11 %p_ZL7threshs_7, i10 %p_ZL7threshs_8, i10 %p_ZL7threshs_9, i10 %p_ZL7threshs_10, i10 %p_ZL7threshs_11, i10 %p_ZL7threshs_12, i10 %p_ZL7threshs_13, i10 %p_ZL7threshs_14" [/home/robotics/Documents/bharat-ai-soc-student-challenge/New_Train/new_res_brevitas/finn/finn_zybo_project/finn_build_temp/code_gen_ipgen_MVAU_hls_1__774deg0/top_MVAU_hls_1.cpp:37]   --->   Operation 5 'call' 'call_ln37' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 3.31>
+ST_3 : Operation 6 [1/2] (3.31ns)   --->   "%call_ln37 = call void @Matrix_Vector_Activate_Stream_Batch, i8 %in0_V, i8 %out_V, i8 %weights_V, i10 %p_ZL7threshs_0, i10 %p_ZL7threshs_1, i10 %p_ZL7threshs_2, i10 %p_ZL7threshs_3, i10 %p_ZL7threshs_4, i10 %p_ZL7threshs_5, i11 %p_ZL7threshs_6, i11 %p_ZL7threshs_7, i10 %p_ZL7threshs_8, i10 %p_ZL7threshs_9, i10 %p_ZL7threshs_10, i10 %p_ZL7threshs_11, i10 %p_ZL7threshs_12, i10 %p_ZL7threshs_13, i10 %p_ZL7threshs_14" [/home/robotics/Documents/bharat-ai-soc-student-challenge/New_Train/new_res_brevitas/finn/finn_zybo_project/finn_build_temp/code_gen_ipgen_MVAU_hls_1__774deg0/top_MVAU_hls_1.cpp:37]   --->   Operation 6 'call' 'call_ln37' <Predicate = true> <Delay = 3.31> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 7 [1/1] (0.00ns)   --->   "%spectopmodule_ln25 = spectopmodule void @_ssdm_op_SpecTopModule, void @empty_2" [/home/robotics/Documents/bharat-ai-soc-student-challenge/New_Train/new_res_brevitas/finn/finn_zybo_project/finn_build_temp/code_gen_ipgen_MVAU_hls_1__774deg0/top_MVAU_hls_1.cpp:25]   --->   Operation 7 'spectopmodule' 'spectopmodule_ln25' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 8 [1/1] (0.00ns)   --->   "%specinterface_ln25 = specinterface void @_ssdm_op_SpecInterface, i32 0, void @empty_3, i32 0, i32 0, void @empty_1, i32 0, i32 0, void @empty_1, void @empty_1, void @empty_1, i32 0, i32 0, i32 0, i32 0, void @empty_1, void @empty_1, i32 4294967295, i32 0" [/home/robotics/Documents/bharat-ai-soc-student-challenge/New_Train/new_res_brevitas/finn/finn_zybo_project/finn_build_temp/code_gen_ipgen_MVAU_hls_1__774deg0/top_MVAU_hls_1.cpp:25]   --->   Operation 8 'specinterface' 'specinterface_ln25' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 9 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %in0_V, void @empty, i32 1, i32 1, void @empty_0, i32 0, i32 0, void @empty_1, void @empty_1, void @empty_1, i32 0, i32 0, i32 0, i32 0, void @empty_1, void @empty_1, i32 4294967295, i32 0"   --->   Operation 9 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 10 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i8 %in0_V"   --->   Operation 10 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 11 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %weights_V, void @empty, i32 1, i32 1, void @empty_0, i32 0, i32 0, void @empty_1, void @empty_1, void @empty_1, i32 0, i32 0, i32 0, i32 0, void @empty_1, void @empty_1, i32 4294967295, i32 0"   --->   Operation 11 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 12 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i8 %weights_V"   --->   Operation 12 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 13 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %out_V, void @empty, i32 1, i32 1, void @empty_0, i32 0, i32 0, void @empty_1, void @empty_1, void @empty_1, i32 0, i32 0, i32 0, i32 0, void @empty_1, void @empty_1, i32 4294967295, i32 0"   --->   Operation 13 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 14 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i8 %out_V"   --->   Operation 14 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 15 [1/1] (0.00ns)   --->   "%ret_ln39 = ret" [/home/robotics/Documents/bharat-ai-soc-student-challenge/New_Train/new_res_brevitas/finn/finn_zybo_project/finn_build_temp/code_gen_ipgen_MVAU_hls_1__774deg0/top_MVAU_hls_1.cpp:39]   --->   Operation 15 'ret' 'ret_ln39' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 2.7ns.
+
+ <State 1>: 0ns
+The critical path consists of the following:
+
+ <State 2>: 0ns
+The critical path consists of the following:
+
+ <State 3>: 3.32ns
+The critical path consists of the following:
+	'call' operation ('call_ln37', /home/robotics/Documents/bharat-ai-soc-student-challenge/New_Train/new_res_brevitas/finn/finn_zybo_project/finn_build_temp/code_gen_ipgen_MVAU_hls_1__774deg0/top_MVAU_hls_1.cpp:37) to 'Matrix_Vector_Activate_Stream_Batch' [27]  (3.32 ns)
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

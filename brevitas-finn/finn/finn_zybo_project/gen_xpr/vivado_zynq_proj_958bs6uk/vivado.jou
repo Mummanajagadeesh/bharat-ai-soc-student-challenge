@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Fri Feb 20 15:49:19 2026
+# Process ID: 15324
+# Current directory: /tmp/finn_build_temp/vivado_zynq_proj_958bs6uk
+# Command line: vivado -mode batch -source /tmp/finn_build_temp/vivado_zynq_proj_958bs6uk/ip_config.tcl
+# Log file: /tmp/finn_build_temp/vivado_zynq_proj_958bs6uk/vivado.log
+# Journal file: /tmp/finn_build_temp/vivado_zynq_proj_958bs6uk/vivado.jou
+# Running On: 7af742889c22, OS: Linux, CPU Frequency: 953.391 MHz, CPU Physical cores: 24, Host memory: 67110 MB
+#-----------------------------------------------------------
+source /tmp/finn_build_temp/vivado_zynq_proj_958bs6uk/ip_config.tcl

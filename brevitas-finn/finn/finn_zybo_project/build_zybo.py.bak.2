@@ -1,0 +1,116 @@
+import finn.builder.build_dataflow as build
+import finn.builder.build_dataflow_config as build_cfg
+import finn.util.basic as finn_basic
+import finn.transformation.fpgadataflow.templates as finn_templates
+
+# =========================================================================
+# CRITICAL FIX 1: Inject the Zybo Z7-10 into FINN's internal board registries
+# =========================================================================
+finn_basic.pynq_part_map["Zybo-Z7-10"] = "xc7z010clg400-1"
+finn_basic.pynq_native_port_width["Zybo-Z7-10"] = 32
+
+# FINN also checks a separate shell flow map — patch that too
+# so board detection doesn't fall through to "Unrecognized board"
+try:
+    import finn.util.fpgadataflow as finn_fpga_util
+    if hasattr(finn_fpga_util, 'pynq_part_map'):
+        finn_fpga_util.pynq_part_map["Zybo-Z7-10"] = "xc7z010clg400-1"
+except Exception as e:
+    print(f"Note: Could not patch finn.util.fpgadataflow: {e}")
+
+# =========================================================================
+# CRITICAL FIX 2: Bypass FINN's Hardcoded AXI-Lite Interface Limit
+# =========================================================================
+template_path = finn_templates.__file__
+
+with open(template_path, "r") as f:
+    template_code = f.read()
+
+patched = False
+
+if 'if {$NUM_AXILITE > 9}' in template_code:
+    template_code = template_code.replace(
+        'if {$NUM_AXILITE > 9}',
+        'if {$NUM_AXILITE > 99}'
+    )
+    patched = True
+    print("🛠️  Patched: AXI-Lite interface limit raised to 99.")
+
+# =========================================================================
+# CRITICAL FIX 3: Inject ZYNQ_TYPE and board variables directly into the
+# TCL template so Vivado never hits the "can't read ZYNQ_TYPE" error.
+#
+# The TCL script assumes ZYNQ_TYPE is set before the if/elseif block runs.
+# FINN sets it via board lookup — but since Zybo-Z7-10 is unrecognized by
+# the TCL generator itself, the variable is never assigned.
+# We inject a hardcoded assignment at the top of the TCL body.
+# =========================================================================
+
+TCL_INJECTION = """
+# --- Injected by build_zybo.py for Zybo Z7-10 support ---
+set ZYNQ_TYPE "zynq_7000"
+set FPGA_PART "xc7z010clg400-1"
+# ---------------------------------------------------------
+"""
+
+# Find a stable anchor point near the top of the TCL template
+# (after the proc/namespace setup, before the ip_config logic)
+TCL_ANCHOR = 'create_bd_design "top"'
+
+if TCL_ANCHOR in template_code and TCL_INJECTION.strip() not in template_code:
+    template_code = template_code.replace(
+        TCL_ANCHOR,
+        TCL_ANCHOR + "\n" + TCL_INJECTION
+    )
+    patched = True
+    print("🛠️  Patched: ZYNQ_TYPE='zynq_7000' injected into TCL template.")
+
+# Also fix the AXI Master port width — Zynq-7000 GP0 is 32-bit
+# FINN may generate a 64-bit AXI master which causes port mismatch
+AXI_WIDTH_ORIG = 'CONFIG.PCW_USE_S_AXI_HP0 {1}'
+AXI_WIDTH_FIXED = 'CONFIG.PCW_USE_S_AXI_HP0 {1}] [get_bd_cells zynq_ps]\n    set_property -dict [list CONFIG.PCW_S_AXI_HP0_DATA_WIDTH {32}'
+
+if AXI_WIDTH_ORIG in template_code and 'PCW_S_AXI_HP0_DATA_WIDTH' not in template_code:
+    template_code = template_code.replace(AXI_WIDTH_ORIG, AXI_WIDTH_FIXED)
+    patched = True
+    print("🛠️  Patched: AXI HP0 data width forced to 32-bit for Zynq-7000.")
+
+if patched:
+    with open(template_path, "w") as f:
+        f.write(template_code)
+    print("✅  All TCL template patches written successfully.")
+else:
+    print("ℹ️  Template already patched or anchors not found — no changes made.")
+
+# =========================================================================
+# CRITICAL FIX 4: Verify the TCL anchor actually resolved
+# (diagnostic — prints the lines around the injection so you can confirm)
+# =========================================================================
+with open(template_path, "r") as f:
+    lines = f.readlines()
+
+for i, line in enumerate(lines):
+    if 'ZYNQ_TYPE' in line and i < 80:  # only care about early definitions
+        print(f"  TCL line {i+1}: {line.rstrip()}")
+
+# =========================================================================
+# Build Configuration
+# =========================================================================
+model_file = "zybo_resnet.onnx"
+
+cfg = build_cfg.DataflowBuildConfig(
+    output_dir          = "output_hardware",
+    target_fps          = 10,
+    synth_clk_period_ns = 10.0,
+    board               = "Zybo-Z7-10",
+    fpga_part           = "xc7z010clg400-1",
+    shell_flow_type     = build_cfg.ShellFlowType.VIVADO_ZYNQ,
+    generate_outputs    = [
+        build_cfg.DataflowOutputType.BITFILE,
+        build_cfg.DataflowOutputType.PYNQ_DRIVER,
+    ]
+)
+
+print("\n🚀 Starting FINN Hardware Build for Zybo Z7-10...")
+build.build_dataflow_cfg(model_file, cfg)
+print("\n✅ Build Complete!")
